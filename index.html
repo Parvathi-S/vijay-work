@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="css/reset.css">
+    <!-- CSS reset -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Resource style -->
+    <script src="js/modernizr.js"></script>
+    <!-- Modernizr -->
+
+    <title>Responsive Sidebar Navigation | CodyHouse</title>
+</head>
+<body>
+    <header class="cd-main-header">
+        <a href="#0" class="cd-logo">
+            <img src="img/cd-logo.svg" alt="Logo"></a>
+
+        <div class="cd-search is-hidden">
+            <form action="#0">
+                <input type="search" placeholder="Search...">
+            </form>
+        </div>
+        <!-- cd-search -->
+
+        <a href="#0" class="cd-nav-trigger">Menu<span></span></a>
+
+        <nav class="cd-nav">
+            <ul class="cd-top-nav">
+                <li><a href="#0">Tour</a></li>
+                <li><a href="#0">Support</a></li>
+                <li class="has-children account">
+                    <a href="#0">
+                        <img src="img/cd-avatar.png" alt="avatar">
+                        Account
+					</a>
+
+                    <ul>
+
+                        <li><a id="myaccount" rel="tab" href="#myaccount">My Account</a></li>
+
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <!-- .cd-main-header -->
+
+    <main class="cd-main-content">
+	<nav class="cd-side-nav">
+
+			<ul>
+				<li class="has-children overview">
+					<a rel="tab" href="#Dashboard">Dashboard</a>
+				
+				</li>
+				<li class="has-children overview">
+					<a rel="tab" href="#Section1">Section1</a>
+				
+				</li>
+				<li class="has-children notifications">
+					<a rel="tab" href="#Section2">Section2</a>
+				</li>
+
+				<li class="has-children comments">
+					<a rel="tab" href="#Section3">Section3</a>
+				</li>
+				<li class="has-children bookmarks">
+					<a href="#0">Section4</a>
+			    </li>
+			</ul>
+
+			<ul>
+				<li><a href="#0">Logout</a></li>
+			</ul>
+		</nav>
+
+		<div class="content-wrapper">
+	
+            <h1>hi am home page</h1>
+		</div> <!-- .content-wrapper -->
+	</main>
+    <!-- .cd-main-content -->
+    <script src="js/jquery-2.1.4.js"></script>
+    <script src="js/jquery.menu-aim.js"></script>
+    <script src="js/main.js"></script>
+    <!-- Resource jQuery -->
+
+    <!--1: -->
+    <!--    <script type="text/javascript">
+        $(document).ready(function () {
+            $("a[rel=tab]").on("click", function (event) {
+                //event.preventDefault();
+                var url = $(this).attr("href").split("#")[1];
+
+                $(".content-wrapper").load(url + ".html");
+
+            });
+
+      
+            var url = window.location.hash.split("#")[1];
+            $(".content-wrapper").load(url + ".html");
+
+            $(window).bind('popstate', function () {
+
+                var url = window.location.hash.split("#")[1];
+           if (url.indexOf(".html") > -1) {
+                 location.reload();
+             }
+                $(".content-wrapper").load(url + ".html");
+            });
+        });
+
+   
+        </script>-->
+
+    <!--2:-->
+
+<!--    <script type="text/javascript">
+        $(document).ready(function () {
+            $("a[rel=tab]").on("click", function (event) {
+                event.preventDefault();
+                var url = $(this).attr("href").split("#")[1];
+
+                $(".content-wrapper").load(url + ".html");
+
+            });
+     });
+   </script>-->
+
+      <!--3:-->
+     <script type="text/javascript">
+         $(document).ready(function () {
+             $("a[rel=tab]").on("click", function (event) {
+                event.preventDefault();
+                 var url = $(this).attr("href").split("#")[1];
+
+                 $(".content-wrapper").load(url + ".html");
+
+                 //to change the browser URL to the given link location
+                 window.history.pushState({ page: url }, "", url);
+
+                 //stop refreshing to the page given in
+                 return true;
+             });
+            
+        
+         });
+    
+
+         $(window).bind('popstate', function (event) {
+            // location.reload();
+             var url = location.href;
+             if (url.indexOf(".html") > -1) {
+                 location.reload();
+             }
+                 $(".content-wrapper").load(url + ".html");
+         });
+    
+   </script>
+
+</body>
+</html>
